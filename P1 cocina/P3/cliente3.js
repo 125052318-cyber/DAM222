@@ -132,11 +132,13 @@ function procesarPedido(pedido) {
     setTimeout(function() {
 
         pedido.estado = "Preparando";
+        console.log("");
         console.log("Estado: Preparando...");
 
         setTimeout(function() {
 
             pedido.estado = "Empacando";
+            
             console.log("Estado: Empacando...");
 
             setTimeout(function() {
