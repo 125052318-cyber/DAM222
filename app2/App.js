@@ -12,21 +12,11 @@ export default function App() {
 
 
     <View style={styles.container}>
-      <Text>Hola Mundo React Native !</Text>
-      <Image source={require("./assets/image.png")}></Image>
+      <Perfil nombre = "Genaro" carrera = "ITIID" materia = "Materia Movil" cuatri = "4"/>
 
-      {/* Componente propio */}
-      <Text>------------------------------------</Text>
-      <Saludo></Saludo>
-      <Saludo/>
+      <Perfil nombre = "Emilio" carrera = "ITIID" materia = "Materia Movil" cuatri = "4"/>
 
-       <Text>------------------------------------</Text>
-      <Saludos2></Saludos2>
-      <Saludos2/>
-
-      {/* Componente propio de tarea */}
-      <Text>====================================================</Text>
-      <Perfil></Perfil>
+      <Perfil nombre = "Jenny" carrera = "ITIID" materia = "Materia Movil" cuatri = "4"/>
 
       <StatusBar style="auto" />
     </View>
