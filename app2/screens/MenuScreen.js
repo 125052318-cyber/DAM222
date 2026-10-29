@@ -5,6 +5,7 @@ import { StyleSheet, View, Text, Button} from 'react-native';
 import { useState } from 'react';
 import Tarjetas from './Tarjetas';
 import SafeScrean from './SafeScreen';
+import PressableSwitch from './PressableSwitch'
 
 /* 2.- Zona Main */
 export default function MenuScreen() {
@@ -17,6 +18,9 @@ export default function MenuScreen() {
 
         case 'safescreen':
             return <SafeScrean/>
+        
+        case 'pressable':
+            return <PressableSwitch/>
 
         case 'menu':
             default:
@@ -28,11 +32,17 @@ export default function MenuScreen() {
 
                     <Button title="Tarjetas" onPress={()=>setScreen('tarjetas')}></Button>
                     <Button title="SafeAreaView" onPress={()=>setScreen('safescreen')}></Button>
-                    <Button title="Pressable & switch" onPress={()=>setScreen('safescreen')}></Button>
+
+                    <Button title="Pressable & switch" onPress={()=>setScreen('pressable')}></Button>
+
                     <Button title="TextInput & Alert" onPress={()=>setScreen('safescreen')}></Button>
+
                     <Button title="FlatList & SectionLis" onPress={()=>setScreen('safescreen')}></Button>
+
                     <Button title="ImageBackgroung" onPress={()=>setScreen('safescreen')}></Button>
+
                     <Button title="Modal & Botton sheet" onPress={()=>setScreen('safescreen')}></Button>
+
                     <Button title="ActivityIndicator , KeyboardAvoiding" onPress={()=>setScreen('safescreen')}></Button>
                 <StatusBar style="auto" />
                 </View>
