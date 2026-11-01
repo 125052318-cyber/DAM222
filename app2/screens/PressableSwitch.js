@@ -1,6 +1,7 @@
 import { View , Image , Pressable , Switch , StyleSheet , Text } from "react-native";
 import { useState } from "react";
 import SwitchEjemplo from "../components/SwitchEjemplo";
+
 export default function PressableSwitch(){
 
     const [imagenGrande , setImagenGrande] = useState(false)
