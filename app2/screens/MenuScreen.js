@@ -8,6 +8,7 @@ import SafeScrean from './SafeScreen';
 import PressableSwitch from './PressableSwitch'
 import SectionListScreen from './SectionListScreen';
 import ImageBackgroung from './ImageBackgroung';
+import Inicios from './Inicios';
 
 /* 2.- Zona Main */
 export default function MenuScreen() {
@@ -30,6 +31,9 @@ export default function MenuScreen() {
         case 'ImageBack':
             return <ImageBackgroung/>
 
+        case 'Activity':
+            return <Inicios/>
+
         case 'menu':
             default:
                  return (
@@ -51,7 +55,7 @@ export default function MenuScreen() {
 
                     <Button title="Modal & Botton sheet" onPress={()=>setScreen('safescreen')}></Button>
 
-                    <Button title="ActivityIndicator , KeyboardAvoiding" onPress={()=>setScreen('safescreen')}></Button>
+                    <Button title="ActivityIndicator , KeyboardAvoiding" onPress={()=>setScreen('Activity')}></Button>
                 <StatusBar style="auto" />
                 </View>
 
