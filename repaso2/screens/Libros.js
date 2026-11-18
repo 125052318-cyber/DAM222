@@ -44,11 +44,11 @@ const guardarYverificar = () =>{
         setAutor("");
         setGenero("");
 
-        /* Se apaga el indicadro de carga */
+        /* Se apaga el indicador de carga */
         setCargar(false)
 
          /* Validacion para cuando se haga el registro exitosamente */
-         /* Usar comillas invertidas en caso de mostrar las variables --> `` */
+         /* Usar comillas invertidas en caso de mostrar las variables --> `` */ 
         Alert.alert("Libro guardado exitosamente")
 
         },4000)
@@ -72,7 +72,7 @@ if(mostrarSplash){
             <Text style={styles.slplasLoan}>Repa2</Text>
         </View>
     )
-}
+  }
 
     return(
         <> 

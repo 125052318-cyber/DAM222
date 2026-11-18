@@ -1,5 +1,5 @@
 import { StatusBar  } from "expo-status-bar";
-import { StyleSheet , Text , View , ImageBackground , Platform , ActivityIndicator } from "react-native";
+import { StyleSheet , Text , View, ImageBackground , Platform , ActivityIndicator } from "react-native";
 import {useState , useEffect} from 'react'
 
 export default  function ImageBackgroung(){
@@ -35,8 +35,6 @@ return(
 
    <StatusBar style='light'></StatusBar>
   </ImageBackground>
-
-  
 )
 
 }
