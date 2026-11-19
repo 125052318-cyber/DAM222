@@ -9,6 +9,7 @@ import PressableSwitch from './PressableSwitch'
 import SectionListScreen from './SectionListScreen';
 import ImageBackgroung from './ImageBackgroung';
 import Inicios from './Inicios';
+import ModalBottomSheett from './ModalBottomSheett';
 
 /* 2.- Zona Main */
 export default function MenuScreen() {
@@ -30,6 +31,9 @@ export default function MenuScreen() {
 
         case 'ImageBack':
             return <ImageBackgroung/>
+
+        case 'modal':
+            return <ModalBottomSheett/>
 
         case 'Activity':
             return <Inicios/>
@@ -53,7 +57,7 @@ export default function MenuScreen() {
 
                     <Button title="ImageBackgroung" onPress={()=>setScreen('ImageBack')}></Button>
 
-                    <Button title="Modal & Botton sheet" onPress={()=>setScreen('safescreen')}></Button>
+                    <Button title="Modal & Botton sheet" onPress={()=>setScreen('modal')}></Button>
 
                     <Button title="ActivityIndicator , KeyboardAvoiding" onPress={()=>setScreen('Activity')}></Button>
                 <StatusBar style="auto" />
