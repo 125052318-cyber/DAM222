@@ -1,16 +1,22 @@
-import React from 'react';
+import React , { useState, useCallback } from 'react';
 import {SafeAreaView,View,Text,FlatList,StyleSheet,Pressable } from 'react-native';
-import {router} from 'expo-router';
+import {router , useFocusEffect} from 'expo-router';
+import { obtenerUsuarios } from '../services/usuariosService';
 
 export default function ConsultaUsuariosScreen() {
 
-  const usuarios = [
-    { id: '1', nombre: 'Isay Guerra', edad: 22 },
-    { id: '2', nombre: 'Ana López', edad: 19 },
-    { id: '3', nombre: 'Carlos Gonzalez', edad: 25 },
-    { id: '4', nombre: 'Bjork Guerra', edad: 21 },
-    { id: '5', nombre: 'Luisa Martínez', edad: 28 },
-  ];
+  const [usuarios, setUsuarios] = useState([]);
+
+    const cargarUsuarios = async () => {
+    const lista = await obtenerUsuarios();
+    setUsuarios(lista);
+    };
+
+    useFocusEffect(
+     useCallback(() => {
+    cargarUsuarios();
+  }, [])
+);
 
   const renderTarjeta = ({ item }) => (
  <Pressable
@@ -36,7 +42,7 @@ export default function ConsultaUsuariosScreen() {
 
       <FlatList
         data={usuarios}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => String(item.id)}
         renderItem={renderTarjeta}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 20 }}

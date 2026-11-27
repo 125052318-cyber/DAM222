@@ -1,19 +1,35 @@
 import React, { useState } from 'react';
-import { SafeAreaView,View,Text,StyleSheet,Pressable,Modal,} from 'react-native';
-import {router,useLocalSearchParams} from 'expo-router';
+import { SafeAreaView, View, Text, StyleSheet, Pressable, Modal, Alert } from 'react-native';
+import { router, useLocalSearchParams } from 'expo-router';
+import { eliminarUsuario } from '../services/usuariosService';
 
 export default function DetalleUsuarioScreen() {
-  const {id,nombre,edad}=useLocalSearchParams();
-   // Estado para mostrar u ocultar el modal
+  const { id, nombre, edad } = useLocalSearchParams();
+  // Estado para mostrar u ocultar el modal
   const [modalVisible, setModalVisible] = useState(false);
-  const actualizarUsuario=()=>{
-    router.push({pathname:'/actualiza', params:{id:id, nombre:nombre, edad:edad}})
+  const [eliminando, setEliminando] = useState(false);
+
+  const actualizarUsuario = () => {
+    router.push({ pathname: '/actualiza', params: { id: id, nombre: nombre, edad: edad } });
   };
 
   // Confirmar la eliminación
-  const confirmarEliminacion = () => {
-    console.log('Eliminar usuario:', id);
-    setModalVisible(false);
+  const confirmarEliminacion = async () => {
+    if (eliminando) return;
+    setEliminando(true);
+    try {
+      const resultado = await eliminarUsuario(id);
+      setModalVisible(false);
+      if (!resultado.ok) {
+        Alert.alert('Error', resultado.errores.join('\n'));
+        return;
+      }
+      if (router.canGoBack()) {
+        router.back();
+      }
+    } finally {
+      setEliminando(false);
+    }
   };
 
 

@@ -1,9 +1,32 @@
 import React, { useState } from 'react';
-import {View,SafeAreaView,Text,TextInput,Pressable,StyleSheet,} from 'react-native';
+import {View,SafeAreaView,Text,TextInput,Pressable,StyleSheet, Alert} from 'react-native';
+import { router } from 'expo-router';
+import { crearUsuario } from '../services/usuariosService';
 
 export default function App() {
   const [nombre, setNombre] = useState('');
   const [edad, setEdad] = useState('');
+
+  const [guardando, setGuardando] = useState(false);
+
+  const manejarAgregarUsuario = async () => {
+  if (guardando) return;
+  setGuardando(true);
+  try {
+    const resultado = await crearUsuario({ nombre, edad });
+    if (!resultado.ok) {
+      Alert.alert('Error de validación', resultado.errores.join('\n'));
+      return;
+    }
+    setNombre('');
+    setEdad('');
+    Alert.alert('Éxito', 'Usuario guardado en LocalStorage.', [
+      { text: 'Aceptar', onPress: () => router.canGoBack() && router.back() },
+    ]);
+  } finally {
+    setGuardando(false);
+  }
+ };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -29,7 +52,9 @@ export default function App() {
           onChangeText={setEdad}
         />
 
-        <Pressable style={styles.boton}>
+        <Pressable style={styles.boton}
+        onPress={manejarAgregarUsuario}
+        disabled={guardando}>
           <Text style={styles.textoBoton}>
             Agregar Usuario
           </Text>
